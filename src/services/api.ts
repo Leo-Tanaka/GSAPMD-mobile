@@ -14,5 +14,9 @@ export const apiService = {
   sendTelemetry: async (data: TelemetryDTO): Promise<OperationalEvent> => {
     const response = await axios.post<OperationalEvent>(`${API_BASE_URL}/telemetry`, data);
     return response.data;
+  },
+
+  deleteTelemetry: async (id: number): Promise<void> => {
+    await axios.delete(`${API_BASE_URL}/telemetry/${id}`);
   }
 };
